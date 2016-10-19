@@ -1,6 +1,6 @@
 # flask-jwt-boilerplate
 
-** URLs
+## URLs
 - /auth/login/
 - /auth/info/
 - /auth/refresh/
