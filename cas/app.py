@@ -3,8 +3,7 @@ from __future__ import unicode_literals
 import importlib
 import os
 
-from flask import Flask, redirect, jsonify
-from flask import url_for
+from flask import Flask, jsonify
 
 import auth
 from core.exceptions import APIError
@@ -28,7 +27,7 @@ def on_api_error(error):
 
 
 @app.errorhandler(NotImplementedError)
-def not_implemented_error(error):
+def not_implemented_error(_):
     response = jsonify({'message': 'Not implemented'})
     response.status_code = 400
     return response
@@ -36,6 +35,4 @@ def not_implemented_error(error):
 
 @app.route('/')
 def index():
-    if auth.current_identity:
-        return redirect(url_for('auth.info'))
-    return redirect((url_for('auth.login')))
+    return 'OK'
